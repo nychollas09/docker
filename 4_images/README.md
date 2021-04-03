@@ -58,3 +58,31 @@ docker build -t CONTAINER_RESGISTRY_USER/IMAGE_NAME:IMAGE_TAG DOCKERFILE_PATH
 
 docker build -t nichollasf/nginx-with-vim:latest .
 ```
+
+## ENTRYPOINT X CMD
+
+```Dockerfile
+FROM ubuntu:latest
+
+# É algo fixo e sempre será executado
+ENTRYPOINT ["echo", "Hello"]
+
+# É flexível e pode ser por outro valor especificado no momento de rodar o container (Caso não seja informado valor para o CMD, vai o que está especificado no Dockerfile)
+CMD ["World"]
+```
+
+```bash
+docker run nichollasf/hello PARAMETRO_CMD
+
+# EX:
+
+docker run nichollasf/hello Nichollas
+
+# output (sem parámetro):
+
+Hello World
+
+# output (com parámetro):
+
+Hello Nichollas
+```
