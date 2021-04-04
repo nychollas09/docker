@@ -5,6 +5,7 @@ services:
     build:
       context: node
     container_name: app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
     tty: true
     ports:
       - "3000:3000"
@@ -12,11 +13,13 @@ services:
       - ./node:/usr/src/app
     networks:
       - node-network
+    depends_on:
+      - db
 
   db:
     image: mysql:8
     command: --innodb-use-native-aio=0
-    container_name: mysql
+    container_name: db
     restart: always
     tty: true
     volumes:
