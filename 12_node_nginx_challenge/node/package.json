@@ -1,0 +1,25 @@
+{
+  "name": "challenge",
+  "version": "1.0.0",
+  "description": "Node.js and Nginx Challenge",
+  "main": "index.js",
+  "scripts": {
+    "migrations:run": "npx sequelize-cli db:migrate",
+    "seeds:run": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:seed:all",
+    "start": "npm run migrations:run && npm run seeds:run && node src/app/index.js"
+  },
+  "keywords": [
+    "Node",
+    "API"
+  ],
+  "author": "Nichollas Falcão dos Santos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}
