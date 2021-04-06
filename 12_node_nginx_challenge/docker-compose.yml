@@ -19,8 +19,7 @@ services:
     build:
       context: node
     container_name: node-app-challenge
-    entrypoint: dockerize -wait tcp://db-mysql:3306 -timeout 240s docker-entrypoint.sh
-    command: npm start
+    entrypoint: dockerize -wait tcp://db-mysql:3306 -timeout 240s npm start
     tty: true
     volumes:
       - ./node:/usr/challenge
